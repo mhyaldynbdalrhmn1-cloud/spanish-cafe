@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spanish Cafe | Premium Coffee Experience</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Playfair Display for headers, Inter for body, Cairo for Arabic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            50: '#fdfbf7',
+                            100: '#f6f0e5',
+                            200: '#e6d3bc',
+                            600: '#8c6239',
+                            700: '#6f4e37',
+                            800: '#4a3319',
+                            950: '#1c120c',
+                        },
+                        gold: {
+                            DEFAULT: '#d4af37',
+                            light: '#f3e5ab',
+                            dark: '#aa7c11'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        arabic: ['Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1c120c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4a3319;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8c6239;
+        }
+
+        /* Fade-in Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-coffee-950 text-coffee-100 font-sans antialiased overflow-x-hidden">
+
+    <!-- Header / Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-coffee-950/80 backdrop-blur-md border-b border-coffee-800/40 transition-all duration-300 id='navbar'">
+        <div class="max-w-7xl px-6 lg:px-12 py-4 flex justify-between items-center mx-auto">
+            <a href="#" class="font-serif text-2xl font-bold tracking-wide text-gold flex items-center gap-2">
+                <i data-lucide="coffee" class="w-6 h-6"></i>
+                SPANISH CAFE
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wider uppercase">
+                <a href="#" class="hover:text-gold transition-colors duration-300">Home</a>
+                <a href="#about" class="hover:text-gold transition-colors duration-300">Our Story</a>
+                <a href="#menu" class="hover:text-gold transition-colors duration-300">Menu</a>
+                <a href="#gallery" class="hover:text-gold transition-colors duration-300">Gallery</a>
+                <a href="#contact" class="hover:text-gold transition-colors duration-300">Contact</a>
+            </nav>
+
+            <!-- CTA Desktop -->
+            <div class="hidden md:flex items-center">
+                <a href="tel:01092967490" class="flex items-center gap-2 border border-gold/50 px-4 py-2 rounded-full text-xs font-semibold tracking-widest text-gold hover:bg-gold hover:text-coffee-950 transition-all duration-300">
+                    <i data-lucide="phone" class="w-3.5 h-3.5"></i> Call Now
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden text-coffee-100 hover:text-gold transition-colors" aria-label="Toggle Menu">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-coffee-950 border-b border-coffee-800 px-6 py-6 space-y-4 absolute top-full left-0 w-full transition-all duration-300 shadow-xl">
+            <a href="#" class="block text-lg hover:text-gold transition-colors mobile-link">Home</a>
+            <a href="#about" class="block text-lg hover:text-gold transition-colors mobile-link">Our Story</a>
+            <a href="#menu" class="block text-lg hover:text-gold transition-colors mobile-link">Menu</a>
+            <a href="#gallery" class="block text-lg hover:text-gold transition-colors mobile-link">Gallery</a>
+            <a href="#contact" class="block text-lg hover:text-gold transition-colors mobile-link">Contact</a>
+            <a href="tel:01092967490" class="inline-flex items-center gap-2 bg-gold text-coffee-950 px-6 py-2 rounded-full font-semibold w-full justify-center">
+                <i data-lucide="phone" class="w-4 h-4"></i> 01092967490
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-coffee-900/60 via-coffee-950 to-coffee-950 pt-20 overflow-hidden">
+        <!-- Visual Overlay Gradients -->
+        <div class="absolute inset-0 bg-black/40 z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-coffee-950 via-transparent to-transparent z-10"></div>
+
+        <!-- Stock Atmospheric Background (Abstract Roast Background) -->
+        <div class="absolute inset-0 z-0 opacity-25 scale-105 transform motion-safe:animate-[pulse_8s_infinite]">
+            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=1600" alt="Cafe ambiance" class="w-full h-full object-cover filter blur-[2px]">
+        </div>
+
+        <div class="relative z-20 max-w-5xl px-6 text-center mx-auto space-y-8 mt-12">
+            <span class="text-xs md:text-sm tracking-[0.3em] uppercase text-gold inline-block border-b border-gold/30 pb-2 font-medium">Elevate Your Senses</span>
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-coffee-50 leading-tight font-bold tracking-tight">
+                Crafting the Perfect <br><span class="italic text-transparent bg-clip-text bg-gradient-to-r from-gold via-coffee-200 to-gold">Spanish Brew</span>
+            </h1>
+            <p class="text-coffee-200 max-w-xl mx-auto text-base md:text-lg font-light leading-relaxed">
+                Step away into a premium sanctuary of rich aromas, artisan perfection, and an aesthetic tailored for connoisseurs.
+            </p>
+            <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#menu" class="w-full sm:w-auto bg-gradient-to-r from-gold-dark to-gold text-coffee-950 px-8 py-4 rounded-full font-semibold text-sm tracking-wider uppercase shadow-lg shadow-gold/10 hover:shadow-gold/20 hover:scale-105 transition-all duration-300">
+                    Explore Our Menu
+                </a>
+                <a href="#about" class="w-full sm:w-auto border border-coffee-200/30 hover:border-gold/60 text-coffee-100 hover:text-gold px-8 py-4 rounded-full font-semibold text-sm tracking-wider uppercase backdrop-blur-sm transition-all duration-300">
+                    Discover Our Story
+                </a>
+            </div>
+        </div>
+
+        <!-- Floating Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-70 animate-bounce">
+            <span class="text-[10px] tracking-widest uppercase text-coffee-200">Scroll</span>
+            <i data-lucide="arrow-down" class="w-4 h-4 text-gold"></i>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-24 lg:py-32 px-6 lg:px-12 max-w-7xl mx-auto reveal">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+
+            <div class="lg:col-span-5 space-y-6">
+                <span class="text-xs uppercase tracking-[0.2em] text-gold font-semibold block">About Spanish Cafe</span>
+                <h2 class="font-serif text-4xl lg:text-5xl text-coffee-50 font-bold leading-tight">Where Atmosphere Meets Artistry</h2>
+                <div class="w-20 h-[2px] bg-gold"></div>
+                <p class="text-coffee-200 font-light leading-relaxed">
+                    At Spanish Cafe, we believe a great cup of coffee is an immersive ritual. Nestled in a pocket of warm, premium architecture, our spaces are crafted to inspire creative encounters, cozy reading hours, and deep conversations.
+                </p>
+                <p class="text-coffee-200 font-light leading-relaxed">
+                    Every bean is roasted to extract subtle, intricate flavor notes, while our specialized milkshakes and artisanal fresh juices offer an elevated profile for every palate.
+                </p>
+                <div class="pt-4 grid grid-cols-2 gap-6 border-t border-coffee-800/60">
+                    <div>
+                        <h4 class="text-gold font-serif text-2xl font-bold">10:00 AM</h4>
+                        <p class="text-xs text-coffee-200 uppercase tracking-wider mt-1">Opening Daily</p>
+                    </div>
+                    <div>
+                        <h4 class="text-gold font-serif text-2xl font-bold">11:00 PM</h4>
+                        <p class="text-xs text-coffee-200 uppercase tracking-wider mt-1">Closing Restfully</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 grid grid-cols-12 gap-4 relative">
+                <div class="absolute -inset-4 bg-gold/5 blur-3xl rounded-full -z-10"></div>
+                <div class="col-span-7 overflow-hidden rounded-2xl shadow-2xl hover:scale-[1.02] transition-transform duration-500">
+                    <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&q=80&w=800" alt="Premium coffee beans roast" class="w-full h-80 object-cover">
+                </div>
+                <div class="col-span-5 overflow-hidden rounded-2xl shadow-2xl mt-8 hover:scale-[1.02] transition-transform duration-500">
+                    <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&q=80&w=600" alt="Latte art preparation" class="w-full h-64 object-cover">
+                </div>
+                <div class="col-span-12 overflow-hidden rounded-2xl shadow-2xl -mt-4 hover:scale-[1.01] transition-transform duration-500">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=1000" alt="Cafe table aesthetic" class="w-full h-56 object-cover">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Interactive Menu Section -->
+    <section id="menu" class="py-24 bg-gradient-to-b from-transparent via-coffee-950 to-transparent border-t border-b border-coffee-900/40 reveal">
+        <div class="max-w-7xl px-6 lg:px-12 mx-auto">
+
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                <span class="text-xs uppercase tracking-[0.2em] text-gold font-semibold block">Curated Selection</span>
+                <h2 class="font-serif text-4xl lg:text-5xl text-coffee-50 font-bold">Our Signature Menu</h2>
+                <div class="w-16 h-[2px] bg-gold mx-auto"></div>
+                <p class="text-sm text-coffee-200 font-light">
+                    Every ingredient is carefully curated, balanced meticulously, and served with true hospitality.
+                </p>
+            </div>
+
+            <!-- Tabs Navigation -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-12 max-w-3xl mx-auto">
+                <button onclick="filterMenu('all')" id="tab-all" class="menu-tab px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-gold text-coffee-950 transition-all duration-300">All Drinks</button>
+                <button onclick="filterMenu('hot')" id="tab-hot" class="menu-tab px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-coffee-800 text-coffee-200 hover:border-gold/60 transition-all duration-300">Hot Drinks</button>
+                <button onclick="filterMenu('cold')" id="tab-cold" class="menu-tab px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-coffee-800 text-coffee-200 hover:border-gold/60 transition-all duration-300">Cold Drinks</button>
+                <button onclick="filterMenu('milkshakes')" id="tab-milkshakes" class="menu-tab px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-coffee-800 text-coffee-200 hover:border-gold/60 transition-all duration-300">Milkshakes</button>
+                <button onclick="filterMenu('juices')" id="tab-juices" class="menu-tab px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-coffee-800 text-coffee-200 hover:border-gold/60 transition-all duration-300">Fresh Juices</button>
+            </div>
+
+            <!-- Menu Grid Container -->
+            <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 max-w-5xl mx-auto transition-all duration-500">
+
+                <!-- Hot Drinks -->
+                <div class="menu-item" data-category="hot">
+                    <div class="flex justify-between items-end gap-4 p-2 group hover:bg-coffee-900/20 rounded-xl transition-colors duration-300">
+                        <div class="space-y-1">
+                            <h3 class="font-medium text-lg text-coffee-50 group-hover:text-gold transition-colors duration-300">Coffee <span class="font-arabic text-sm text-coffee-200 ml-2 font-normal">(قهوة)</span></h3>
+                            <p class="text-xs text-coffee-200 font-light">Classic, rich traditional brew with tailored roasting.</p>
+                        </div>
+                        <div class="flex-grow border-b border-dashed border-coffee-800/80 mb-2 mx-2"></div>
+                        <span class="font-serif text-lg font-semibold text-gold whitespace-nowrap">30 EGP</span>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="hot">
+                    <div class="flex justify-between items-end gap-4 p-2 group hover:bg-coffee-900/20 rounded-xl transition-colors duration-300">
+                        <div class="space-y-1">
+                            <h3 class="font-medium text-lg text-coffee-50 group-hover:text-gold transition-colors duration-300">Cappuccino <span class="font-arabic text-sm text-coffee-200 ml-2 font-normal">(كابتشينو)</span></h3>
+                            <p class="text-xs text-coffee-200 font-light">Velvety steamed milk over an assertive double shot espresso.</p>
+                        </div>
+                        <div class="flex-grow border-b border-dashed border-coffee-800/80 mb-2 mx-2"></div>
+                        <span class="font-serif text-lg font-semibold text-gold whitespace-nowrap">40 EGP</span>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="hot">
+                    <div class="flex justify-between items-end gap-4 p-2 group hover:bg-coffee-900/20 rounded-xl transition-colors duration-300">
+                        <div class="space-y-1">
+                            <h3 class="font-medium text-lg text-coffee-50 group-hover:text-gold transition-colors duration-300">Espresso / Macchiato <span class="font-arabic text-sm text-coffee-200 ml-2 font-normal">(إسبريسو / ماكياتو)</span></h3>
+                            <p class="text-xs text-coffee-200 font-light">Intense, robust extraction with a smooth dollop of pristine foam.</p>
+                        </div>
+                        <div class="flex-grow border-b border-dashed border-coffee-800/80 mb-2 mx-2"></div>
+                        <span class="font-serif text-lg font-semibold text-gold whitespace-nowrap">30 EGP</span>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="hot">
+                    <div class="flex justify-between items-end gap-4 p-2 group hover:bg-coffee-900/20 rounded-xl transition-colors duration-300">
+                        <div class="space-y-1">
+                            <h3 class="font-medium text-lg text-coffee-50 group-hover:text-gold transition-colors duration-300">Tea <span class="font-arabic text-sm text-coffee-200 ml-2 font-normal">(شاي)</span></h3>
+                            <p class="text-xs text-coffee-200 font-light">Premium selected whole leaf tea served perfectly balanced.</p>
+                        </div>
+                        <div class="flex-grow border-b border-dashed border-coffee-800/80 mb-2 mx-2"></div>
+                        <span class="font-serif text-lg font-semibold text-gold whitespace-nowrap">20 EGP</span>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="hot">
+                    <div class="flex justify-between items-end gap-4 p-2 group hover:bg-coffee-900/20 rounded-xl transition-colors duration-300">
+                        <div class="space-y-1">
+                            <h3 class="font-medium text-lg text-coffee-50 group-hover:text-gold transition-colors duration-300">Nescafe <span class="font-arabic text-sm text-coffee-200 ml-2 font-normal">(نيسكافيه)</span></h3>
+                            <p class="text-xs text-coffee-200 font-light">Smooth and rich whipped dynamic instant coffee premium blend.</p>
+                        </div>
+                        <div class="flex-grow border-b border-dashed border-coffee-800/80 mb-2 mx-2"></div>
+                        <span class="font-serif text-lg font-semibold text-gold whitespace-nowrap">45 EGP</span>
+                    </div>
+                </div>
+
+                <!-- Cold Drinks -->
+                <div class="menu-item" data-category="cold">
+                    <div class="flex justify-between items-end gap-4 p-2 group hover:bg-coffee-900/20 rounded-xl transition-colors duration-300">
+                        <div class="space-y-1">
+                            <h3 class="font-medium text-lg text-coffee-50 group-hover:text-gold transition-colors duration-300">Soft Drinks <span class="font-arabic text-sm text-coffee-200 ml-2 font-normal">(مشروبات غازية)</span></h3>
+                            <p class="text-xs text-coffee-200 font-light">Chilled refreshing selection of sodas.</p>
+                        </div>
+                        <div class="flex-grow border-b border-dashed border-coffee-800/80 mb-2 mx-2"></div>
+                        <span class="font-serif text-lg font-semibold text-gold whitespace-nowrap">45 EGP</span>
+                    </div>
+                </div>
+
+                <!-- Milkshakes -->
+                <div class="menu-item" data-category="milkshakes">
+                    <div class="flex justify-between items-end gap-4 p-2 group hover:bg-coffee-900/20 rounded-xl transition-colors duration-300">
+                        <div class="space-y-1">
+                            <h3 class="font-medium text-lg text-coffee-50 group-hover:text-gold transition-colors duration-300">Lotus Biscoff Milkshake <span class="font-arabic text-sm text-coffee-200 ml-2 font-normal">(ميلك شيك لوتس)</span></h3>
+                            <p class="text-xs text-coffee-200 font-light">Creamy texture blended with spiced Biscoff cookies & spread.</p>
+                        </div>
+                        <div class="flex-grow border-b border-dashed border-coffee-800/80 mb-2 mx-2"></div>
+                        <span class="font-serif text-lg font-semibold text-gold whitespace-nowrap">100 EGP</span>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="milkshakes">
+                    <div class="flex justify-between items-end gap-4 p-2 group hover:bg-coffee-900/20 rounded-xl transition-colors duration-300">
+                        <div class="space-y-1">
+                            <h3 class="font-medium text-lg text-coffee-50 group-hover:text-gold transition-colors duration-300">Oreo Bliss Milkshake <span class="font-arabic text-sm text-coffee-200 ml-2 font-normal">(أوريو بلس ميلكشيك)</span></h3>
+                            <p class="text-xs text-coffee-200 font-light">Decadent vanilla ice cream crushed with deep Oreo cookie crumbles.</p>
+                        </div>
+                        <div class="flex-grow border-b border-dashed border-coffee-800/80 mb-2 mx-2"></div>
+                        <span class="font-serif text-lg font-semibold text-gold whitespace-nowrap">100 EGP</span>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="milkshakes">
+                    <div class="flex justify-between items-end gap-4 p-2 group hover:bg-coffee-900/20 rounded-xl transition-colors duration-300">
+                        <div class="space-y-1">
+                            <h3 class="font-medium text-lg text-coffee-50 group-hover:text-gold transition-colors duration-300">Salted Caramel Milkshake <span class="font-arabic text-sm text-coffee-200 ml-2 font-normal">(ميلك شيك كراميل مملح)</span></h3>
+                            <p class="text-xs text-coffee-200 font-light">The perfect sweet and salty artisan balance of golden caramel.</p>
+                        </div>
+                        <div class="flex-grow border-b border-dashed border-coffee-800/80 mb-2 mx-2"></div>
+                        <span class="font-serif text-lg font-semibold text-gold whitespace-nowrap">100 EGP</span>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="milkshakes">
+                    <div class="flex justify-between items-end gap-4 p-2 group hover:bg-coffee-900/20 rounded-xl transition-colors duration-300">
+                        <div class="space-y-1">
+                            <h3 class="font-medium text-lg text-coffee-50 group-hover:text-gold transition-colors duration-300">Creamy Chocolate Milkshake <span class="font-arabic text-sm text-coffee-200 ml-2 font-normal">(كريمي الشوكولاتة ميلكشيك)</span></h3>
+                            <p class="text-xs text-coffee-200 font-light">Rich imported gourmet cocoa infused into premium thick cream base.</p>
+                        </div>
+                        <div class="flex-grow border-b border-dashed border-coffee-800/80 mb-2 mx-2"></div>
+                        <span class="font-serif text-lg font-semibold text-gold whitespace-nowrap">100 EGP</span>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="milkshakes">
+                    <div class="flex justify-between items-end gap-4 p-2 group hover:bg-coffee-900/20 rounded-xl transition-colors duration-300">
+                        <div class="space-y-1">
+                            <h3 class="font-medium text-lg text-coffee-50 group-hover:text-gold transition-colors duration-300">Classic Vanilla Bean Milkshake <span class="font-arabic text-sm text-coffee-200 ml-2 font-normal">(ميلك شيك فانيليا)</span></h3>
+                            <p class="text-xs text-coffee-200 font-light">Authentic scraped Madagascar vanilla beans for pure, deep elegance.</p>
+                        </div>
+                        <div class="flex-grow border-b border-dashed border-coffee-800/80 mb-2 mx-2"></div>
+                        <span class="font-serif text-lg font-semibold text-gold whitespace-nowrap">100 EGP</span>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="milkshakes">
+                    <div class="flex justify-between items-end gap-4 p-2 group hover:bg-coffee-900/20 rounded-xl transition-colors duration-300">
+                        <div class="space-y-1">
+                            <h3 class="font-medium text-lg text-coffee-50 group-hover:text-gold transition-colors duration-300">Fresh Strawberry Milkshake <span class="font-arabic text-sm text-coffee-200 ml-2 font-normal">(ميلك شيك فراولة)</span></h3>
+                            <p class="text-xs text-coffee-200 font-light">Vibrant handpicked organic strawberries blended with luxurious cream.</p>
+                        </div>
+                        <div class="flex-grow border-b border-dashed border-coffee-800/80 mb-2 mx-2"></div>
+                        <span class="font-serif text-lg font-semibold text-gold whitespace-nowrap">100 EGP</span>
+                    </div>
+                </div>
+
+                <!-- Fresh Juices -->
+                <div class="menu-item" data-category="juices">
+                    <div class="flex justify-between items-end gap-4 p-2 group hover:bg-coffee-900/20 rounded-xl transition-colors duration-300">
+                        <div class="space-y-1">
+                            <h3 class="font-medium text-lg text-coffee-50 group-hover:text-gold transition-colors duration-300">Orange <span class="font-arabic text-sm text-coffee-200 ml-2 font-normal">(برتقال)</span></h3>
+                            <p class="text-xs text-coffee-200 font-light">Freshly squeezed citrus, bursting with vibrant natural vitamins.</p>
+                        </div>
+                        <div class="flex-grow border-b border-dashed border-coffee-800/80 mb-2 mx-2"></div>
+                        <span class="font-serif text-lg font-semibold text-gold whitespace-nowrap">50 EGP</span>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="juices">
+                    <div class="flex justify-between items-end gap-4 p-2 group hover:bg-coffee-900/20 rounded-xl transition-colors duration-300">
+                        <div class="space-y-1">
+                            <h3 class="font-medium text-lg text-coffee-50 group-hover:text-gold transition-colors duration-300">Pineapple <span class="font-arabic text-sm text-coffee-200 ml-2 font-normal">(أناناس)</span></h3>
+                            <p class="text-xs text-coffee-200 font-light">Tropical cold pressed crisp gold pineapple nectar.</p>
+                        </div>
+                        <div class="flex-grow border-b border-dashed border-coffee-800/80 mb-2 mx-2"></div>
+                        <span class="font-serif text-lg font-semibold text-gold whitespace-nowrap">85 EGP</span>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="juices">
+                    <div class="flex justify-between items-end gap-4 p-2 group hover:bg-coffee-900/20 rounded-xl transition-colors duration-300">
+                        <div class="space-y-1">
+                            <h3 class="font-medium text-lg text-coffee-50 group-hover:text-gold transition-colors duration-300">Mango <span class="font-arabic text-sm text-coffee-200 ml-2 font-normal">(مانجا)</span></h3>
+                            <p class="text-xs text-coffee-200 font-light">Thick, sweet, luxurious velvet pulp from supreme hand-picked mangoes.</p>
+                        </div>
+                        <div class="flex-grow border-b border-dashed border-coffee-800/80 mb-2 mx-2"></div>
+                        <span class="font-serif text-lg font-semibold text-gold whitespace-nowrap">90 EGP</span>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="juices">
+                    <div class="flex justify-between items-end gap-4 p-2 group hover:bg-coffee-900/20 rounded-xl transition-colors duration-300">
+                        <div class="space-y-1">
+                            <h3 class="font-medium text-lg text-coffee-50 group-hover:text-gold transition-colors duration-300">Strawberry <span class="font-arabic text-sm text-coffee-200 ml-2 font-normal">(فراولة)</span></h3>
+                            <p class="text-xs text-coffee-200 font-light">Fresh pureed seasonal field strawberries served crisp and chilled.</p>
+                        </div>
+                        <div class="flex-grow border-b border-dashed border-coffee-800/80 mb-2 mx-2"></div>
+                        <span class="font-serif text-lg font-semibold text-gold whitespace-nowrap">90 EGP</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section id="gallery" class="py-24 max-w-7xl px-6 lg:px-12 mx-auto reveal">
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+            <span class="text-xs uppercase tracking-[0.2em] text-gold font-semibold block">Visual Luxury</span>
+            <h2 class="font-serif text-4xl lg:text-5xl text-coffee-50 font-bold">The Cafe Aesthetic</h2>
+            <div class="w-16 h-[2px] bg-gold mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="group relative overflow-hidden rounded-2xl aspect-[4/5] shadow-xl">
+                <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=600" alt="Cafe interior cozy table" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-coffee-950/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <p class="text-xs uppercase tracking-widest text-gold">Premium Ambiance</p>
+                </div>
+            </div>
+            <div class="group relative overflow-hidden rounded-2xl aspect-[4/5] shadow-xl lg:translate-y-6">
+                <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&q=80&w=600" alt="Iced cold drink" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-coffee-950/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <p class="text-xs uppercase tracking-widest text-gold">Artisan Cold Brews</p>
+                </div>
+            </div>
+            <div class="group relative overflow-hidden rounded-2xl aspect-[4/5] shadow-xl">
+                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=600" alt="Hot espresso serving" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-coffee-950/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <p class="text-xs uppercase tracking-widest text-gold">The Perfect Pour</p>
+                </div>
+            </div>
+            <div class="group relative overflow-hidden rounded-2xl aspect-[4/5] shadow-xl lg:translate-y-6">
+                <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&q=80&w=600" alt="Gourmet fresh juice" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-coffee-950/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <p class="text-xs uppercase tracking-widest text-gold">Pure Fresh Juices</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer Section -->
+    <footer id="contact" class="bg-gradient-to-t from-[#0e0906] to-coffee-950 border-t border-coffee-900/50 mt-20 pt-20 pb-10">
+        <div class="max-w-7xl px-6 lg:px-12 mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 pb-16 border-b border-coffee-900/60">
+
+            <!-- Brand Column -->
+            <div class="lg:col-span-4 space-y-6">
+                <a href="#" class="font-serif text-2xl font-bold tracking-wide text-gold flex items-center gap-2">
+                    <i data-lucide="coffee" class="w-6 h-6"></i>
+                    SPANISH CAFE
+                </a>
+                <p class="text-sm text-coffee-200 font-light max-w-sm leading-relaxed">
+                    Bringing the rich, robust heritage of premium coffee roasting and beautiful, cozy moments straight to you.
+                </p>
+                <div class="flex items-center gap-4 text-coffee-200">
+                    <a href="#" class="hover:text-gold transition-colors" aria-label="Instagram"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="#" class="hover:text-gold transition-colors" aria-label="Facebook"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                    <a href="#" class="hover:text-gold transition-colors" aria-label="Twitter"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+
+            <!-- Operational Hours -->
+            <div class="lg:col-span-4 space-y-4">
+                <h3 class="text-sm uppercase tracking-widest text-gold font-semibold">Hours & Availability</h3>
+                <div class="space-y-3 text-sm text-coffee-200 font-light">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="clock" class="w-4 h-4 text-gold flex-shrink-0"></i>
+                        <span>Open Daily: 10:00 AM – 11:00 PM</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="phone-call" class="w-4 h-4 text-gold flex-shrink-0"></i>
+                        <a href="tel:01092967490" class="hover:text-gold transition-colors">01092967490</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Address Column with Modern Layout Placeholder Map -->
+            <div class="lg:col-span-4 space-y-4">
+                <h3 class="text-sm uppercase tracking-widest text-gold font-semibold">Our Sanctuary</h3>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-3">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-gold mt-1 flex-shrink-0"></i>
+                        <p class="font-arabic text-base text-coffee-50 font-medium tracking-wide">
+                            34 ش عمر بن ابي ربيعة -الحضرة، الاسكندرية، مصر
+                        </p>
+                    </div>
+
+                    <!-- Premium Architectural Miniature Visual / Map Mockup -->
+                    <div class="relative w-full h-32 rounded-xl overflow-hidden border border-coffee-800 bg-coffee-900 flex items-center justify-center group opacity-85 hover:opacity-100 transition-opacity">
+                        <div class="absolute inset-0 bg-[radial-gradient(#4a3319_1px,transparent_1px)] [background-size:16px_16px] opacity-40"></div>
+                        <div class="absolute w-24 h-24 bg-gold/5 rounded-full blur-xl"></div>
+                        <div class="relative flex flex-col items-center text-center p-4 space-y-1">
+                            <span class="text-[11px] uppercase tracking-wider text-gold font-medium">Al Hadrah, Alexandria</span>
+                            <span class="text-[10px] text-coffee-200 font-light">Tap to open dynamic navigation directions</span>
+                        </div>
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Rights Statement -->
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-coffee-200 font-light">
+            <p>&copy; 2026 Spanish Cafe. All Rights Reserved.</p>
+            <p class="tracking-wide">Designed beautifully with passion.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Handling Components, Filters, and Navigation Effects -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Responsive Mobile Menu Drawer Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Sticky Navbar Scroll Accent Modification
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('bg-coffee-950/95', 'shadow-lg', 'py-3');
+                header.classList.remove('bg-coffee-950/80', 'py-4');
+            } else {
+                header.classList.add('bg-coffee-950/80', 'py-4');
+                header.classList.remove('bg-coffee-950/95', 'shadow-lg', 'py-3');
+            }
+        });
+
+        // Scroll Driven Reveal / Transition Animation Trigger
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            const triggerBottom = window.innerHeight * 0.85;
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                if (elementTop < triggerBottom) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        // Initial setup execution on window initialization
+        revealOnScroll();
+
+        // Menu Interactive Category Filter Module
+        function filterMenu(category) {
+            const items = document.querySelectorAll('.menu-item');
+            const tabs = document.querySelectorAll('.menu-tab');
+
+            // Handle active tab visualization styles
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-gold', 'text-coffee-950');
+                tab.classList.add('border', 'border-coffee-800', 'text-coffee-200', 'hover:border-gold/60');
+            });
+
+            const activeTab = document.getElementById(`tab-${category}`);
+            if (activeTab) {
+                activeTab.classList.remove('border', 'border-coffee-800', 'text-coffee-200', 'hover:border-gold/60');
+                activeTab.classList.add('bg-gold', 'text-coffee-950');
+            }
+
+            // Handle active list item visualization rendering mapping
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, 50);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
